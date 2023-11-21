@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인 화면</title>
+</head>
+<body>
+  <h1>메인 화면</h1>
+  <h3> - index.html</h3>
+  <ul>
+    <li><a href="/about">about</a></li>
+    <li><a href="/users">users</a></li>
+  </ul>
+
+  <hr>
+  <h5>회원 조회</h5>
+  <div>
+    <label for="userId">회원아이디</label>
+    <input type="text" name="userId" id="userId" placeholder="회원아이디">
+    <button type="button" onclick="getUser()">아이디 get전송</button>
+    <label for="user">getResult</label>
+    <textarea name="user" id="user" cols="30" rows="5"></textarea>
+  <hr>    
+<button type="button" onclick="postUser()">아이디 post전송</button>
+<label for="user2">postResult</label>
+    <textarea name="user2" id="user2" cols="30" rows="5"></textarea>
+  <hr>
+    <label for="userId2">회원아이디</label>
+    <input type="text" name="userId2" id="userId2" placeholder="회원아이디">
+    <button type="button" onclick="putUser()">아이디 put전송</button>
+    <label for="user3">putResult</label>
+    <textarea name="user3" id="user3" cols="30" rows="5"></textarea>
+    <hr>
+    <label for="userId3">회원아이디</label>
+    <input type="text" name="userId3" id="userId3" placeholder="회원아이디">
+    <button type="button" onclick="delUser()">아이디 delete전송</button>
+    <label for="user4">putResult</label>
+    <textarea name="user4" id="user4" cols="30" rows="5"></textarea>
+
+  </div>
+
+  <script>
+    
+    //회원 조회 - /users/id
+    function getUser(){
+      let userId = document.getElementById(`userId`).value
+
+      fetch(`http://localhost:3000/users/${userId}`)
+      .then(response=>{
+        console.log(response)
+        return response.text() 
+      })
+      .then(data=>{
+        document.getElementById(`user`).value = data
+        console.log(data)
+      })
+      .catch(error=>{
+        console.error(error)
+      })
+    }
+
+
+    //회원등록
+    function postUser(){
+      let url = `http://localhost:3000/users`
+      const data = {
+        name : 'joeun', age:20
+      }
+      const init={
+        method : `POST`,
+        headers : {
+          'Content-Type' : `application/json`
+        },
+        body:JSON.stringify(data)
+      }
+      fetch(url,init)
+      .then(response=>{
+        console.log(response)
+        return response.text()
+      }).then(data=>{
+        document.getElementById(`user2`).value = data
+        console.log(data)
+      }).catch(error=>
+      console.error(error))
+    }
+    //회원수정
+    function putUser(){
+      let url = `http://localhost:3000/users/${document.getElementById(`userId2`).value}`
+      const init={
+        method : `PUT`,
+      }
+      fetch(url,init)
+      .then(response=>{
+        console.log(response)
+        return response.text()
+      }).then(data=>{
+        document.getElementById(`user3`).value = data
+        console.log(data)
+      }).catch(error=>
+      console.error(error))
+    }
+
+    //회원삭제
+    function delUser(){
+      let url = `http://localhost:3000/users/${document.getElementById(`userId3`).value}`
+      const init={
+        method : `DELETE`,
+      }
+      fetch(url,init)
+      .then(response=>{
+        console.log(response)
+        return response.text()
+      }).then(data=>{
+        document.getElementById(`user4`).value = data
+        console.log(data)
+      }).catch(error=>
+      console.error(error))
+    }
+
+
+
+  </script>
+
+</body>
+</html>
