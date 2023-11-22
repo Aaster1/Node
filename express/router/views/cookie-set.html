@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cookie-set</title>
+</head>
+<body>
+  <h1>쿠키 등록이 완료되었습니다!</h1>
+  <button onclick="view()">쿠키 확인하러가기</button>
+
+  <div id="result">
+
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+
+    const view = function(){
+
+      location.href = `/cookie`
+
+    
+
+    // let url = `http://localhost:3000/cookie`
+    // $.ajax({
+    //   url : url,
+    //   type : `get`,
+    //   dataType : `application/html`,
+    //   success:function(res){
+    //     $(`#result`).html(res);
+    //     console.log(res)
+    //   },
+    //   error: function(err){
+    //     alert(err)
+    //   }
+
+    // })
+  }
+  </script>
+</body>
+</html>
