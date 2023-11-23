@@ -1,0 +1,33 @@
+extends layout 
+block content
+    h1= `작성페이지입니다!`
+
+    form(action="/board/insert", method="post") 
+      table 
+        tr 
+          td 제목
+          td
+            input(
+              type="text",
+              name="title",
+              id="title"
+            )
+        tr 
+          td 작성자
+          td
+            input(
+              type="text",
+              name="writer",
+              id="writer"
+            )
+        tr 
+          td 내용
+          td
+            input(
+              type="text",
+              name="content",
+              id="content"
+            )
+        tr 
+          td 
+            input(type="submit", value="작성")

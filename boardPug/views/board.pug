@@ -1,0 +1,26 @@
+- var boardList = boardList
+h1= `게시판 목록입니다`
+
+button(onclick="location.href='/board/insert'") 작성화면으로
+hr 
+
+table
+  thead 
+    tr 
+      td 제목
+      td 작성자
+      td 내용
+  tbody 
+    each board, index in boardList
+      tr(onclick=`location.href='/board/${index}'`)
+        td= board.title
+        td= board.writer
+        td= board.content
+        td 
+          form(action="/board/delete",
+           method="post")
+            input(type="hidden",
+             name="index",
+             value= index
+             )
+            input(type="submit", value="삭제")

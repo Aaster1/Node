@@ -1,0 +1,23 @@
+extends layout 
+block content
+
+  - var board = board
+
+  table  
+    tr 
+      td 제목
+      td= board.title 
+    tr 
+      td 작성자
+      td= board.writer 
+    tr 
+      td 내용
+      td= board.content
+
+  hr 
+  button(onclick=`location.href='/board/update/${board.board_no}'`) 수정
+  form(action="/board/delete" method="post")
+    input(type="hidden" name="index" value=board.board_no)
+    input(type="submit" value="삭제")
+
+  button(onclick=`location.href='/board'`) 목록으로 돌아가기

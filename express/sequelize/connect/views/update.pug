@@ -1,0 +1,40 @@
+extends layout 
+block content
+  h1= board.board_no + `번 게시글 수정페이지입니다.`
+  form(action="/board/update" method="post") 
+    table 
+      tr 
+        td 제목
+        td
+          input(
+            type="text"
+            name="title"
+            id="title"
+            value= board.title
+          )
+      tr 
+        td 작성자
+        td
+          input(
+            type="text"
+            name="writer"
+            id="writer"
+            value= board.writer
+          )
+      tr 
+        td 내용
+        td
+          input(
+            type="text"
+            name="content"
+            id="content"
+            value= board.content
+          )
+    hr
+    input(type="hidden" name="boardNo" id="boardNo" value=board.board_no)
+    input(type="submit" value="수정")
+  hr
+  form(action="/board/delete" method="post")
+    input(type="hidden" name="boardNo" value=board.board_no)
+    input(type="submit" value="삭제")
+

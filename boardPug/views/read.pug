@@ -1,0 +1,18 @@
+- var board = board
+
+table  
+  tr 
+    td 제목
+    td= board.title 
+  tr 
+    td 작성자
+    td= board.writer 
+  tr 
+    td 내용
+    td= board.content
+
+hr 
+button(onclick=`location.href='/board/update/${index}'`) 수정
+form(action="/board/delete" method="post")
+  input(type="hidden" name="index" value=index)
+  input(type="submit" value="삭제")
